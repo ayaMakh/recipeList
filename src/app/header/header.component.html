@@ -1,0 +1,23 @@
+<mat-toolbar color="primary">
+  <span>
+    <a routerLink="/">Recipe List</a>
+  </span>
+  <span class="spacer"></span>
+  <ul>
+    <li>
+      <a mat-button routerLink="/randomrecipe" routerLinkActive="mat-accent">Random Recipe</a>
+    </li>
+    <li *ngIf="isAuthenticated">
+      <a mat-button routerLink="/create" routerLinkActive="mat-accent">New Recipe</a>
+    </li>
+    <li *ngIf="!isAuthenticated">
+      <a mat-button routerLink="/login" routerLinkActive="mat-accent">Login</a>
+    </li>
+    <li *ngIf="!isAuthenticated">
+      <a mat-button routerLink="/signup" routerLinkActive="mat-accent">Sing up</a>
+    </li>
+    <li *ngIf="isAuthenticated">
+      <button mat-button (click)="onLogout()">Logout</button>
+    </li>
+  </ul>
+</mat-toolbar>

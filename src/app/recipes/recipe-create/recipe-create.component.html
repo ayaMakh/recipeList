@@ -1,0 +1,60 @@
+<mat-card>
+  <mat-spinner *ngIf="isLoading"></mat-spinner>
+  <form (submit)="onSaveRecipe(recipeForm)" #recipeForm="ngForm" *ngIf="!isLoading">
+    <mat-form-field>
+      <input
+        matInput
+        type="text"
+        name="title"
+        [ngModel]="recipe?.title"
+        required
+        minlength="3"
+        placeholder="Recipe Title"
+        #title="ngModel">
+      <mat-error *ngIf="title.invalid">Please enter recipe title.</mat-error>
+    </mat-form-field>
+    <mat-form-field>
+      <textarea
+        matInput
+        name="imgUrl"
+        [ngModel]="recipe?.imgUrl"
+        placeholder="Image Url"
+        #content="ngModel"></textarea>
+      <mat-error *ngIf="content.invalid">Please paste image url of the dish.</mat-error>
+    </mat-form-field>
+    <mat-form-field>
+      <textarea
+        matInput
+        name="ingredients"
+        [ngModel]="recipe?.ingredients"
+        required
+        placeholder="Ingredients (format sample: 2 Apples, 1kg Flour)"
+        #content="ngModel"></textarea>
+      <mat-error *ngIf="content.invalid">Please enter recipe ingredients.</mat-error>
+    </mat-form-field>
+    <mat-form-field>
+      <textarea
+        matInput
+        rows="4"
+        name="instructions"
+        [ngModel]="recipe?.instructions"
+        required
+        placeholder="Instructions"
+        #content="ngModel"></textarea>
+      <mat-error *ngIf="content.invalid">Please enter recipe instructions.</mat-error>
+    </mat-form-field>
+    <mat-form-field>
+      <textarea
+        matInput
+        name="sourceUrl"
+        [ngModel]="recipe?.sourceUrl"
+        placeholder="Source Url"
+        #content="ngModel"></textarea>
+      <mat-error *ngIf="content.invalid">Please enter source url of the recipe.</mat-error>
+    </mat-form-field>
+    <button
+      mat-raised-button
+      color="accent"
+      type="submit">Save Recipe</button>
+  </form>
+</mat-card>
